@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle ox9ys53u</title>
+
+  <style>
+    /* CSS untuk Statistik Tarkam */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.team {
+    width: 48%;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.my-team {
+    background-color: #ffecec;
+    border: 2px solid #ff6b6b;
+}
+
+.opponent-team {
+    background-color: #ececff;
+    border: 2px solid #6b6bff;
+}
+
+.team-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button.my-team-btn {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+button.opponent-team-btn {
+    background-color: #6b6bff;
+    color: white;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+}
+
+.summary {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.summary-title {
+    font-weight: bold;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.percentage {
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistik Tarkam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>STATISTIK TARKAM</h1>
+    
+    <div class="team-container">
+        <div class="team my-team">
+            <div class="team-title">TIM SAYA</div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_passes')">Operan Sukses</button>
+                <span id="my_passes" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_failed_passes')">Operan Gagal</button>
+                <span id="my_failed_passes" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_shots')">Tembakan</button>
+                <span id="my_shots" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_on_target')">Ke Arah Gawang</button>
+                <span id="my_on_target" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_corners')">Tendangan Sudut</button>
+                <span id="my_corners" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="my-team-btn" onclick="increment('my_recoveries')">Ball Recovery</button>
+                <span id="my_recoveries" class="stat-value">0</span>
+            </div>
+        </div>
+        
+        <div class="team opponent-team">
+            <div class="team-title">TIM LAWAN</div>
+            
+            <div class="stat-row">
+                <button class="opponent-team-btn" onclick="increment('opponent_passes')">Operan Sukses</button>
+                <span id="opponent_passes" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="opponent-team-btn" onclick="increment('opponent_failed_passes')">Operan Gagal</button>
+                <span id="opponent_failed_passes" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="opponent-team-btn" onclick="increment('opponent_shots')">Tembakan</button>
+                <span id="opponent_shots" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="opponent-team-btn" onclick="increment('opponent_on_target')">Ke Arah Gawang</button>
+                <span id="opponent_on_target" class="stat-value">0</span>
+            </div>
+            
+            <div class="stat-row">
+                <button class="opponent-team-btn" onclick="increment('opponent_corners')">Tendangan Sudut</button>
+                <span id="opponent_corners" class="stat-value">0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="summary">
+        <div class="summary-title">STATISTIK RINGKASAN</div>
+        
+        <div class="summary-row">
+            <span>Total Operan Tim Saya:</span>
+            <span id="total_my_passes">0</span>
+        </div>
+        
+        <div class="summary-row">
+            <span>Total Operan Tim Lawan:</span>
+            <span id="total_opponent_passes">0</span>
+        </div>
+        
+        <div class="summary-row">
+            <span>Akurasi Operan Tim Saya:</span>
+            <span id="my_pass_accuracy">0%</span>
+        </div>
+        
+        <div class="summary-row">
+            <span>Akurasi Operan Tim Lawan:</span>
+            <span id="opponent_pass_accuracy">0%</span>
+        </div>
+        
+        <div class="summary-row">
+            <span>Penguasaan Bola:</span>
+            <span id="possession">50% - 50%</span>
+        </div>
+    </div>
+    
+    <div class="control-buttons">
+        <button class="control-btn" onclick="undo()">Undo</button>
+        <button class="control-btn" onclick="resetAll()">Reset Semua</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+  <script>
+    // JavaScript untuk Statistik Tarkam
+let stats = {
+    my_passes: 0,
+    my_failed_passes: 0,
+    my_shots: 0,
+    my_on_target: 0,
+    my_corners: 0,
+    my_recoveries: 0,
+    opponent_passes: 0,
+    opponent_failed_passes: 0,
+    opponent_shots: 0,
+    opponent_on_target: 0,
+    opponent_corners: 0
+};
+
+let history = [];
+
+function saveState() {
+    history.push({...stats});
+    if (history.length > 10) {
+        history.shift();
+    }
+}
+
+function updateDisplay() {
+    // Update counters
+    Object.keys(stats).forEach(key => {
+        document.getElementById(key).textContent = stats[key];
+    });
+
+    // Hitung dan update statistik ringkasan
+    const totalMyPasses = stats.my_passes + stats.my_failed_passes;
+    const totalOpponentPasses = stats.opponent_passes + stats.opponent_failed_passes;
+    
+    document.getElementById('total_my_passes').textContent = totalMyPasses;
+    document.getElementById('total_opponent_passes').textContent = totalOpponentPasses;
+
+    const myAccuracy = totalMyPasses > 0 ? Math.round((stats.my_passes / totalMyPasses) * 100) : 0;
+    const opponentAccuracy = totalOpponentPasses > 0 ? Math.round((stats.opponent_passes / totalOpponentPasses) * 100) : 0;
+    
+    document.getElementById('my_pass_accuracy').textContent = `${myAccuracy}%`;
+    document.getElementById('opponent_pass_accuracy').textContent = `${opponentAccuracy}%`;
+
+    const totalActions = totalMyPasses + totalOpponentPasses;
+    const myPossession = totalActions > 0 ? Math.round((totalMyPasses / totalActions) * 100) : 50;
+    const opponentPossession = 100 - myPossession;
+    
+    document.getElementById('possession').textContent = `${myPossession}% - ${opponentPossession}%`;
+}
+
+function increment(stat) {
+    saveState();
+    stats[stat]++;
+    updateDisplay();
+}
+
+function undo() {
+    if (history.length > 0) {
+        stats = history.pop();
+        updateDisplay();
+    }
+}
+
+function resetAll() {
+    saveState();
+    Object.keys(stats).forEach(key => {
+        stats[key] = 0;
+    });
+    updateDisplay();
+}
+  </script>
+</body>
+</html>
